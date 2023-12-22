@@ -1,0 +1,134 @@
+#!/usr/bin/env zsh
+
+FONT_FACE="JetBrainsMono Nerd Font"
+
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins-laptop"
+PLUGIN_SHARED_DIR="$HOME/.config/sketchybar/plugins"
+
+sketchybar --bar \
+    height=36 \
+    color=0x00000000 \
+    margin=8 \
+    sticky=on \
+    padding_left=0 \
+    padding_right=0 \
+    notch_width=188 \
+    display=main
+
+# Alternatiive background colors
+# label.color=0xffffffff
+# background.color=0x9924273a
+sketchybar --default \
+    background.color=0xff062734 \
+    background.corner_radius=20 \
+    background.padding_right=5 \
+    background.height=22 \
+    icon.font="$FONT_FACE:Medium:13.0" \
+    icon.padding_left=5 \
+    icon.padding_right=5 \
+    label.font="$FONT_FACE:Medium:12.0" \
+    label.color=0xffffffff \
+    label.y_offset=0 \
+    label.padding_left=0 \
+    label.padding_right=8 \
+    label.corner_radius=20
+
+# CURRENT SPACE: 1,2,3...
+sketchybar --add item current_space left \
+    --set current_space \
+    icon.color=0xffffffff \
+    label.padding_left=0 \
+    label.padding_right=0 \
+    label.drawing=off \
+    script="$PLUGIN_SHARED_DIR/current_space.sh" \
+    --subscribe current_space space_change mouse.clicked
+
+# CURRENT APP: icon + name
+sketchybar --add item front_app left \
+    --set front_app \
+    background.padding_left=0 \
+    background.padding_right=0 \
+    icon.y_offset=1 \
+    icon.color=0xffffffff \
+    icon.padding_right=20 \
+    icon.drawing=no \
+    label.drawing=no \
+    script="$PLUGIN_SHARED_DIR/front_app.sh" \
+    --add item front_app.name left \
+    --set front_app.name \
+    background.color=0xff062734 \
+    background.padding_right=0 \
+    icon.drawing=off \
+    label.font="$FONT_FACE:Bold:12.0" \
+    label.padding_right=8 \
+    label.padding_left=8 \
+    label.drawing=yes
+
+# MOON ICON
+#sketchybar --add item weather.moon right \
+#    --set weather.moon \
+#    background.color=0xff7dc4e4 \
+#    background.padding_right=-1 \
+#    icon.color=0xff181926 \
+#    icon.font="$FONT_FACE:Bold:22.0" \
+#    icon.padding_left=4 \
+#    icon.padding_right=3 \
+#    label.drawing=off \
+#    --subscribe weather.moon mouse.clicked
+
+# SEPARATOR
+sketchybar --add bracket front_app_bracket \
+    front_app \
+    front_app.separator \
+    front_app.name \
+    --subscribe front_app front_app_switched
+
+# CLOCK
+sketchybar --add item clock right \
+    --set clock \
+    background.corner_radius=20 \
+    icon=󰃰 \
+    icon.color=0x75ffffff \
+    icon.padding_left=10 \
+    label.padding_right=10 \
+    update_freq=10 \
+    script="$PLUGIN_SHARED_DIR/clock.sh"
+
+# WEATHER DETAILS
+sketchybar --add item weather right \
+    --set weather \
+    icon.padding_left=10 \
+    label.padding_right=10 \
+    icon= \
+    icon.color=0x75ffffff \
+    icon.font="$FONT_FACE:Bold:15.0" \
+    update_freq=1800 \
+    script="$PLUGIN_SHARED_DIR/weather.sh" \
+    --subscribe weather system_woke
+
+# BATTERY
+sketchybar --add item battery right \
+    --set battery \
+    icon.padding_left=10 \
+    icon.color=0x75ffffff \
+    label.padding_right=10 \
+    update_freq=20 \
+    script="$PLUGIN_DIR/battery.sh"
+
+# VOLUME
+sketchybar --add item volume right \
+    --set volume \
+    icon.color=0x75ffffff \
+    icon.padding_left=10 \
+    icon.padding_right=10 \
+    label.padding_right=10 \
+    label.drawing=true \
+    script="$PLUGIN_SHARED_DIR/volume.sh" \
+    --subscribe volume volume_change
+
+# osascript -e 'quit app "Rectangle"'
+# open -a Rectangle
+
+##### Finalizing Setup #####
+sketchybar --update
+sketchybar --trigger space_change

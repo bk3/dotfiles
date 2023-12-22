@@ -1,0 +1,103 @@
+{
+  :templates {
+    :open-app "osascript -e 'tell application \"%s\" to activate'"
+  },
+  :simlayers {
+    :window-mode { :key :w },
+    :app-mode { :key :o },
+    :utility-mode { :key :u },
+  },
+  :main [
+    {
+      :des "map capslock to command when held, esc when pressed"
+      :rules [
+        [:condi :!blocked :!extend :!apprun]
+          [:##caps_lock :left_control nil {:alone :escape}]
+      ]
+    },
+    {
+      :des "map control-hjkl to vim arrows"
+      :rules [
+        [:!Th :left_arrow],
+        [:!Tj :down_arrow],
+        [:!Tk :up_arrow],
+        [:!Tl :right_arrow]
+      ]
+    },
+    {
+      :des "map backspace to command when held (Kinesis 360)"
+      :rules [
+        [:condi :!blocked :!extend :!apprun]
+          [:delete_or_backspace :left_command nil {:alone :delete_or_backspace}]
+      ]
+    },
+    {
+      :des "app jumping"
+      :rules [
+        [:3 [:open-app "Shapr3D"] :app-mode]
+        [:b [:open-app "Safari"] :app-mode]
+        [:c [:open-app "Fantastical"] :app-mode]
+        [:d [:open-app "Kitty"] :app-mode]
+        [:e [:open-app "Mail"] :app-mode]
+        [:f [:open-app "Finder"] :app-mode]
+        [:g [:open-app "Figma"] :app-mode]
+        [:h [:open-app "ChatGPT"] :app-mode]
+        [:i [:open-app "Notion"] :app-mode]
+        [:j [:open-app "Jira"] :app-mode]
+        [:m [:open-app "Spotify"] :app-mode]
+        [:n [:open-app "Bear"] :app-mode]
+        [:p [:open-app "Photoshop"] :app-mode]
+        [:r [:open-app "Reader"] :app-mode]
+        [:s [:open-app "Slack"] :app-mode]
+        [:t [:open-app "Things"] :app-mode]
+        [:v [:open-app "Zoom"] :app-mode]
+        [:w [:open-app "Linear"] :app-mode]
+        [:y [:open-app "YouTube"] :app-mode]
+      ]
+    },
+    {
+      :des "window management"
+      :rules [
+        [:q :!TOq :window-mode]
+        [:b :!TOb :window-mode]
+        [:r :!TOr :window-mode]
+        [:e :!TOe :window-mode]
+        [:f :!TOf :window-mode]
+        [:h :!TOh :window-mode]
+        [:j :!TOj :window-mode]
+        [:k :!TOk :window-mode]
+        [:l :!TOl :window-mode]
+        [:y :!TOy :window-mode]
+        [:u :!TOu :window-mode]
+        [:i :!TOi :window-mode]
+        [:o :!TOo :window-mode]
+        [:n :!TOn :window-mode]
+        [:m :!TOm :window-mode]
+        [:comma :!TOcomma :window-mode]
+        [:period :!TOperiod :window-mode]
+        [:return_or_enter :!TOreturn_or_enter :window-mode]
+        [:spacebar :!TOspacebar :window-mode]
+        [:hyphen :!TOhyphen :window-mode]
+        [:backslash :!TObackslash :window-mode]
+        [:0 :!TO0 :window-mode]
+      ]
+    },
+    {
+      :des "utility mode"
+      :rules [
+        ; Shotter
+        [:s :!STOs :utility-mode]
+        ; Kap
+        [:r :!STOr :utility-mode]
+        ; ColorSlurp
+        [:c :!STOc :utility-mode]
+        ; KeyClu
+        [:k :!STOk :utility-mode]
+        ; Things quick entry
+        ; Bear quick entry
+        ; Linear quick entry
+        ; Notion search
+      ]
+    },
+  ]
+}
