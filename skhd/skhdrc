@@ -7,6 +7,9 @@ ctrl + alt - q : yabai --stop-service
 ctrl + alt - b : yabai --start-service
 ctrl + alt - r : yabai --restart-service
 
+# toggle gaps and padding
+ctrl + alt - g : yabai -m space --toggle padding; yabai -m space --toggle gap;
+
 # rotate layout clockwise
 ctrl + alt - space : yabai -m space --rotate 270
 
@@ -14,10 +17,10 @@ ctrl + alt - space : yabai -m space --rotate 270
 ctrl + alt - return : yabai -m window --swap first
 
 # maximize a window
-ctrl + alt - f : yabai -m window --toggle zoom-fullscreen
+ctrl + alt - e : yabai -m window --toggle zoom-fullscreen
 
 # toggle window float
-ctrl + alt - e : yabai -m window --toggle float --grid 4:4:1:1:2:2
+ctrl + alt - f : yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 # focus window
 ctrl + alt - h : yabai -m window --focus west
@@ -38,7 +41,8 @@ ctrl + alt - 0x2A : yabai -m space --mirror y-axis
 ctrl + alt - 0x1B : yabai -m space --mirror x-axis
 
 # balance out tree of windows (resize to occupy same area)
-ctrl + alt - 0 : yabai -m space --balance
+ctrl + alt - 0x18 : yabai -m space --balance
+ctrl + shift - 0x18 : yabai -m space --balance
 
 # increase window size
 ctrl + alt - n : yabai -m window --resize left:-20:0
@@ -52,11 +56,11 @@ ctrl + alt - 0x2F : yabai -m window --resize right:20:0
 # shift + cmd - w : yabai -m window --resize top:0:20
 # shift + cmd - d : yabai -m window --resize right:-20:0
 
-# Make window native fullscreen
-# ctrl + alt - return : yabai -m window --toggle native-fullscreen
+# Make window native fullscreen with closing bracket
+ctrl + alt - 0x1E : yabai -m window --toggle native-fullscreen
 
 
 #
 # UTILITIES
 #
-shift + ctrl + alt - k : /Applications/KeyClu.app/Contents/MacOS/KeyClu --show-shortcuts
+ctrl + shift + alt - k : /Applications/KeyClu.app/Contents/MacOS/KeyClu --show-shortcuts

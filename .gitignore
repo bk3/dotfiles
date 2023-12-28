@@ -1,2 +1,11 @@
 .DS_Store
 **/automatic_backups
+
+**/raycast/config.json
+**/raycast/extensions/**
+
+**/yarn/**
+
+**/configstore/**
+**/SmartSetMasterErgo\ \(Mac\)/**
+

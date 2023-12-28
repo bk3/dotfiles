@@ -3,9 +3,11 @@
     :open-app "osascript -e 'tell application \"%s\" to activate'"
   },
   :simlayers {
+    :pane-mode { :key :p },
     :window-mode { :key :w },
-    :app-mode { :key :o },
+    :open-mode { :key :o },
     :utility-mode { :key :u },
+    :edit-mode { :key :tab },
   },
   :main [
     {
@@ -34,70 +36,160 @@
     {
       :des "app jumping"
       :rules [
-        [:3 [:open-app "Shapr3D"] :app-mode]
-        [:b [:open-app "Safari"] :app-mode]
-        [:c [:open-app "Fantastical"] :app-mode]
-        [:d [:open-app "Kitty"] :app-mode]
-        [:e [:open-app "Mail"] :app-mode]
-        [:f [:open-app "Finder"] :app-mode]
-        [:g [:open-app "Figma"] :app-mode]
-        [:h [:open-app "ChatGPT"] :app-mode]
-        [:i [:open-app "Notion"] :app-mode]
-        [:j [:open-app "Jira"] :app-mode]
-        [:m [:open-app "Spotify"] :app-mode]
-        [:n [:open-app "Bear"] :app-mode]
-        [:p [:open-app "Photoshop"] :app-mode]
-        [:r [:open-app "Reader"] :app-mode]
-        [:s [:open-app "Slack"] :app-mode]
-        [:t [:open-app "Things"] :app-mode]
-        [:v [:open-app "Zoom"] :app-mode]
-        [:w [:open-app "Linear"] :app-mode]
-        [:y [:open-app "YouTube"] :app-mode]
+        [:3 [:open-app "Shapr3D"] :open-mode]
+        [:a [:open-app "Arc"] :open-mode]
+        [:b [:open-app "Arc"] :open-mode]
+        [:c [:open-app "Fantastical"] :open-mode]
+        [:d [:open-app "Kitty"] :open-mode]
+        [:e [:open-app "Mail"] :open-mode]
+        [:f [:open-app "Finder"] :open-mode]
+        [:g [:open-app "Figma"] :open-mode]
+        [:h [:open-app "ChatGPT"] :open-mode]
+        [:i [:open-app "Notion"] :open-mode]
+        [:j [:open-app "Jira"] :open-mode]
+        [:m [:open-app "Spotify"] :open-mode]
+        [:n [:open-app "Obsidian"] :open-mode]
+        [:p [:open-app "Photoshop"] :open-mode]
+        [:r [:open-app "Reader"] :open-mode]
+        [:s [:open-app "Slack"] :open-mode]
+        [:t [:open-app "Things3"] :open-mode]
+        [:w [:open-app "Linear"] :open-mode]
+        [:x [:open-app "MindNode"] :open-mode]
+        [:y [:open-app "YouTube"] :open-mode]
+        [:z [:open-app "Zoom"] :open-mode]
+      ]
+    },
+    {
+      :des "screen mode"
+      :rules [
+        ; add screen
+        [:a :!TSa :pane-mode]
+        ; focus screen left
+        [:s :!TSs :pane-mode]
+        ; focus screen right
+        [:g :!TSg :pane-mode]
+        ; move app to screen left
+        [:w :!TSw :pane-mode]
+        ; move app to screen right
+        [:t :!TSt :pane-mode]
+        ; show desktop
+        [:c :!TSc :pane-mode]
+        ; show mission control
+        [:v :!TSv :pane-mode]
+        ; show mission control
+        [:v :!TSv :pane-mode]
+        ; balance windows
+        [:equal_sign :!TSequal_sign :pane-mode]
+        ; move window to specific pane
+        [:1 :!TS1 :pane-mode]
+        [:2 :!TS2 :pane-mode]
+        [:3 :!TS3 :pane-mode]
+        [:4 :!TS4 :pane-mode]
+        [:5 :!TS5 :pane-mode]
+        [:6 :!TS6 :pane-mode]
+        [:7 :!TS7 :pane-mode]
+        [:8 :!TS8 :pane-mode]
+        [:9 :!TS9 :pane-mode]
       ]
     },
     {
       :des "window management"
       :rules [
+        ; quit yabai
         [:q :!TOq :window-mode]
+        ; start yabai
         [:b :!TOb :window-mode]
+        ; restart yabai
         [:r :!TOr :window-mode]
+        ; expand window
         [:e :!TOe :window-mode]
+        ; float window
         [:f :!TOf :window-mode]
+        ; toggle padding and gaps
+        [:g :!TOg :window-mode]
+        ; focus left
         [:h :!TOh :window-mode]
+        ; focus down
         [:j :!TOj :window-mode]
+        ; focus up
         [:k :!TOk :window-mode]
+        ; focus right
         [:l :!TOl :window-mode]
+        ; move left
         [:y :!TOy :window-mode]
+        ; move down
         [:u :!TOu :window-mode]
+        ; move up
         [:i :!TOi :window-mode]
+        ; move right
         [:o :!TOo :window-mode]
+        ; expand left
         [:n :!TOn :window-mode]
+        ; expand down
         [:m :!TOm :window-mode]
+        ; expand up
         [:comma :!TOcomma :window-mode]
+        ; expand right
         [:period :!TOperiod :window-mode]
+        ; balance windows
+        [:equal_sign :!TOequal_sign :window-mode]
+        ; expand to full screen
+        [:close_bracket :!TOclose_bracket :window-mode]
+        ; move to main window
         [:return_or_enter :!TOreturn_or_enter :window-mode]
+        ; rotate windows
         [:spacebar :!TOspacebar :window-mode]
+        ; flip x axis
         [:hyphen :!TOhyphen :window-mode]
+        ; flip y axis
         [:backslash :!TObackslash :window-mode]
-        [:0 :!TO0 :window-mode]
+        ; move right
+        [:v :!TOv :window-mode]
       ]
     },
     {
       :des "utility mode"
       :rules [
-        ; Shotter
+        ; Cleanshot screenshot
         [:s :!STOs :utility-mode]
-        ; Kap
+        ; Cleanshot record video
         [:r :!STOr :utility-mode]
-        ; ColorSlurp
+        ; ColorSlurp color picker
         [:c :!STOc :utility-mode]
-        ; KeyClu
+        ; Calendar
+        [:d :!STOd :utility-mode]
+        ; Clipboard Manager
+        [:p :!STOp :utility-mode]
+        ; Dropover Manager
+        [:f :!STOf :utility-mode]
+        ; KeyClu keyboard shortcuts preview
         [:k :!STOk :utility-mode]
         ; Things quick entry
-        ; Bear quick entry
-        ; Linear quick entry
+        [:t :!STOt :utility-mode]
+        ; Obsidian quick note
+        [:o :!STOo :utility-mode]
         ; Notion search
+        [:i :!STOi :utility-mode]
+      ]
+    },
+    {
+      :des "edit mode"
+      :rules [
+        ; beginning of line
+        [:6 :!Cleft_arrow :edit-mode]
+        ; end of line
+        [:4 :!Cright_arrow :edit-mode]
+        ; delete word
+        [:w :!Odelete_or_backspace :edit-mode]
+        ; delete line
+        [:d :!Cdelete_or_backspace :edit-mode]
+        ; jump word left
+        [:h :!Oleft_arrow :edit-mode]
+        ; jump word right
+        [:l :!Oright_arrow :edit-mode]
       ]
     },
   ]
 }
+
+
