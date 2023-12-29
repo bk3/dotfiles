@@ -1,24 +1,14 @@
-# is_macbook="$(system_profiler SPDisplaysDataType | grep -i "Liquid Retina XDR")"
-# macbook=${#is_macbook}
-# is_studio="$(system_profiler SPDisplaysDataType | grep -i "Studio Display")"
-# studio=${#is_studio}
+# This is used to determine if a monitor is used
+# Since the notch is -only- on the laptop, if a monitor isn't used,
+# then that means the internal display is used ¯\_(ツ)_/¯
+MAIN_DISPLAY=$(system_profiler SPDisplaysDataType | grep -B 3 'Main Display:' | awk '/Display Type/ {print $3}')
 
-# echo "start"
-# echo "- macbook:"
-# echo "$macbook"
-# echo "- studio:"
-# echo "$studio"
+if [[ $MAIN_DISPLAY = "Built-in" ]]; then
+  tp=8
+else
+  tp=40
+fi
 
-# THIS IS BROKEN ON DESKTOP
-# if (( studio == 0 )); then
-#  tp=8
-#fi
-
-#if (( macbook == 0 )); then
-#  tp=40
-#fi
-
-tp=8
 padding=8
 
 # default layout (can be bsp, stack or float)
@@ -50,13 +40,17 @@ yabai -m config mouse_action2 resize
 # when window is dropped in center of another window, swap them (on edges it will split it)
 yabai -m mouse_drop_action swap
 
-yabai -m rule --add app="^System Settings$" manage=off
-yabai -m rule --add app="^Calculator$" manage=off
-yabai -m rule --add app="^Karabiner-Elements$" manage=off
 yabai -m rule --add app="^1Password$" manage=off
-yabai -m rule --add app="^Fantastical$" manage=off
-yabai -m rule --add app="^Raycast$" manage=off
+yabai -m rule --add app="^BetterTouchTool$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^ColorSlurp$" manage=off
 yabai -m rule --add app="^CleanshotX$" manage=off
-yabai -m rule --add app="^Paste$" manage=off
+yabai -m rule --add app="^Dropover$" manage=off
+yabai -m rule --add app="^Fantastical$" manage=off
+yabai -m rule --add app="^Karabiner-Elements$" manage=off
 yabai -m rule --add app="^KeyClu$" manage=off
+yabai -m rule --add app="^Paste$" manage=off
+yabai -m rule --add app="^Raycast$" manage=off
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^TrashMe 3$" manage=off
+yabai -m rule --add app="^Setapp$" manage=off
