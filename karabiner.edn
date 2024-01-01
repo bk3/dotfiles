@@ -3,11 +3,11 @@
     :open-app "osascript -e 'tell application \"%s\" to activate'"
   },
   :simlayers {
-    :pane-mode { :key :p },
-    :window-mode { :key :w },
-    :open-mode { :key :o },
-    :utility-mode { :key :u },
-    :edit-mode { :key :tab },
+    :pane-mode { :key :backslash },
+    :window-mode { :key :tab },
+    :open-mode { :key :slash },
+    :utility-mode { :key :right_shift },
+    :edit-mode { :key :q },
   },
   :main [
     {
