@@ -1025,7 +1025,7 @@
             "key_code" : "z"
           },
           "to" : [ {
-            "shell_command" : "osascript -e 'tell application \"Zoom\" to activate'"
+            "shell_command" : "osascript -e 'tell application \"zoom.us\" to activate'"
           } ],
           "conditions" : [ {
             "name" : "open-mode",
@@ -1044,7 +1044,7 @@
               "value" : 1
             }
           }, {
-            "shell_command" : "osascript -e 'tell application \"Zoom\" to activate'"
+            "shell_command" : "osascript -e 'tell application \"zoom.us\" to activate'"
           } ],
           "from" : {
             "simultaneous" : [ {
@@ -3285,10 +3285,10 @@
           }
         }, {
           "from" : {
-            "key_code" : "p"
+            "key_code" : "v"
           },
           "to" : [ {
-            "key_code" : "p",
+            "key_code" : "v",
             "modifiers" : [ "left_control", "left_option", "left_shift" ]
           } ],
           "conditions" : [ {
@@ -3308,14 +3308,14 @@
               "value" : 1
             }
           }, {
-            "key_code" : "p",
+            "key_code" : "v",
             "modifiers" : [ "left_control", "left_option", "left_shift" ]
           } ],
           "from" : {
             "simultaneous" : [ {
               "key_code" : "right_shift"
             }, {
-              "key_code" : "p"
+              "key_code" : "v"
             } ],
             "simultaneous_options" : {
               "detect_key_down_uninterruptedly" : true,
