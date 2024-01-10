@@ -23,7 +23,9 @@
         [:!Th :left_arrow],
         [:!Tj :down_arrow],
         [:!Tk :up_arrow],
-        [:!Tl :right_arrow]
+        [:!Tl :right_arrow],
+        [:!Topen_bracket :!S9],
+        [:!Tclose_bracket :!S0]
       ]
     },
     {

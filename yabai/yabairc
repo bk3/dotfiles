@@ -6,7 +6,7 @@ MAIN_DISPLAY=$(system_profiler SPDisplaysDataType | grep -B 3 'Main Display:' | 
 if [[ $MAIN_DISPLAY = "Built-in" ]]; then
   tp=8
 else
-  tp=40
+  tp=8
 fi
 
 padding=8
@@ -41,13 +41,17 @@ yabai -m config mouse_action2 resize
 yabai -m mouse_drop_action swap
 
 yabai -m rule --add app="^1Password$" manage=off
+yabai -m rule --add app="^Activity Monitor$" manage=off
 yabai -m rule --add app="^BetterTouchTool$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^ColorSlurp$" manage=off
 yabai -m rule --add app="^CleanshotX$" manage=off
 yabai -m rule --add app="^Dropover$" manage=off
-yabai -m rule --add app="^Fantastical$" manage=off
+# yabai -m rule --add app="^Fantastical$" manage=off
+yabai -m rule --add app="^Fantastical Helper$" manage=off
+yabai -m rule --add app="^Fantastical Widgets$" manage=off
 yabai -m rule --add app="^Karabiner-Elements$" manage=off
+yabai -m rule --add app="^Karabiner-EventViewer$" manage=off
 yabai -m rule --add app="^KeyClu$" manage=off
 yabai -m rule --add app="^Paste$" manage=off
 yabai -m rule --add app="^Raycast$" manage=off
